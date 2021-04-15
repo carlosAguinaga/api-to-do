@@ -11,9 +11,10 @@ const tasksGet = async (req, res) => {
 };
 
 const tasksPost = async (req, res) => {
-  const { note } = req.body;
+  const { note, done = false } = req.body;
   const data = {
     note,
+    done,
     user: req.user._id,
   };
   const task = new Task(data);
@@ -26,12 +27,12 @@ const tasksPost = async (req, res) => {
 
 const tasksUpdate = async (req, res) => {
   const { id } = req.params;
-  const note = req.body.note;
+  const body = req.body;
 
   // const task = await Task.findOne({ _id: id });
   const task = await Task.findById(id)
   if (task && task.user == req.user.id) {
-    await Task.findByIdAndUpdate(id, { note });
+    await Task.findByIdAndUpdate(id, body );
     return res.status(200).json({ msg: "task updated" });
   }
   res.status(401).json({ msg: "unauthorized" });

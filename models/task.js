@@ -9,6 +9,11 @@ const taskSchema = Schema({
       type: Schema.Types.ObjectId,
       ref:'User',
       required: true
+  },
+  done: {
+    type: Boolean,
+    required: [true, "done is required"],
+    default: false
   }
 });
 

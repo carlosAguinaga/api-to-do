@@ -10,7 +10,7 @@ class Server {
     this.paths = {
       auth: "/api/auth",
       users: "/api/users",
-      tasks: "/api/tasks",
+      tasks: "/api/tasks"
     };
 
     // Conenctar base de datos
