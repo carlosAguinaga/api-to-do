@@ -47,10 +47,6 @@ const login = async (req, res) => {
   }
 };
 
-
-
-
-
 const googleSignIn = async (req, res) => {
   const { id_token } = req.body;
 
@@ -67,7 +63,7 @@ const googleSignIn = async (req, res) => {
         password: ":P",
         img,
         google: true,
-        role: "ADMIN_ROLE",
+        role: "USER_ROLE",
       };
 
       user = new User(data);
@@ -85,7 +81,7 @@ const googleSignIn = async (req, res) => {
     const token = await generarJWT(user.id);
 
     res.json({
-      usuario: user,
+      user,
       token,
     });
   } catch (error) {
@@ -95,21 +91,18 @@ const googleSignIn = async (req, res) => {
   }
 };
 
-
 const revalidarToken = async (req, res) => {
-
   const uid = req.user._id;
-  const token = await generarJWT(uid)
+  const token = await generarJWT(uid);
 
   res.json({
     ok: true,
-    token
-  })
-
-}
+    token,
+  });
+};
 
 module.exports = {
   login,
   googleSignIn,
-  revalidarToken
+  revalidarToken,
 };

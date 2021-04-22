@@ -5,12 +5,12 @@ const cors = require("cors");
 class Server {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || 5000;
+    this.port = process.env.PORT || 4000;
 
     this.paths = {
       auth: "/api/auth",
       users: "/api/users",
-      tasks: "/api/tasks"
+      tasks: "/api/tasks",
     };
 
     // Conenctar base de datos
@@ -35,7 +35,7 @@ class Server {
     this.app.use(express.json());
 
     // Directorio público
-    this.app.use(express.static("public"));
+    // this.app.use(express.static("public"));
   }
 
   routes() {

@@ -24,10 +24,10 @@ const tieneRol = (...roles) => {
       });
     }
 
-    if ( !roles.includes(req.user.role) ) {
-        return res.status(401).json({
-            msg:`El servicio prefiere uno de estos roles ${roles}`
-        })
+    if (!roles.includes(req.user.role)) {
+      return res.status(401).json({
+        msg: `El servicio prefiere uno de estos roles ${roles}`,
+      });
     }
 
     next();

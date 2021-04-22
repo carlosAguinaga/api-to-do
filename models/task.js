@@ -6,15 +6,15 @@ const taskSchema = Schema({
     required: [true, "Note is required"],
   },
   user: {
-      type: Schema.Types.ObjectId,
-      ref:'User',
-      required: true
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
   done: {
     type: Boolean,
     required: [true, "done is required"],
-    default: false
-  }
+    default: false,
+  },
 });
 
-module.exports = model('Task', taskSchema)
+module.exports = model("Task", taskSchema);

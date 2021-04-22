@@ -1,14 +1,5 @@
 const { Router } = require("express");
-const { check, param } = require("express-validator");
-
-const { validarJWT, validarCampos } = require("../middlewares");
-
-const {
-  esRolValido,
-  emailExiste,
-  existeUsuarioPorId,
-  existeTaskPorId
-} = require("../helpers/db-validators");
+const { validarJWT } = require("../middlewares");
 
 const {
   tasksGet,
@@ -23,13 +14,7 @@ router.get("/", [validarJWT], tasksGet);
 
 router.post("/", [validarJWT], tasksPost);
 
-router.put(
-  "/:id",
-  [
-    validarJWT, 
-  ],
-  tasksUpdate
-);
+router.put("/:id", [validarJWT], tasksUpdate);
 
 router.delete("/:id", [validarJWT], tasksDelete);
 
