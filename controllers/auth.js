@@ -53,6 +53,7 @@ const googleSignIn = async (req, res) => {
   try {
     const { email, name, img } = await googleVerify(id_token);
 
+    // aqui
     let user = await User.findOne({ email });
 
     if (!user) {
