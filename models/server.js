@@ -18,6 +18,10 @@ class Server {
 
     // Middelwares
     this.middlewares();
+    
+    this.app.get('/', (req, res)=> {
+      res.json({mesagge: "api TODO"})
+    })
 
     // Rutas de mi aplicación
     this.routes();
